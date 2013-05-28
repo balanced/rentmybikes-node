@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Rent my Bike<%= title %></title>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/bootstrap.min.css"/>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/base.css"/>
+</head>
+<body>
+    <a href="<%= config['GITHUB_URL'] %>">
+        <img style="position: absolute; top: 0; right: 0; border: 0;"
+             src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"
+             alt="Fork me on GitHub">
+    </a>
+    <header>
+        <div class="minor">
+            <nav>
+            <% if ( user ) { %>
+                <li><%= user.email %></li>
+                <% if(user.account_uri) { %>
+                <li><a href="/transactions">transaction history</a></li>
+                <% } %>
+                <li><a href="/logout">log out</a></li>
+            <% } else { %>
+                <li><a href="/login">log in</a></li>
+                <li><a href="/signup">sign up</a></li>
+            <% } %>
+            </nav>
+        </div>
+        <div class="major">
+            <h1><a href="/">Rent My Bike</a></h1>
+            <nav>
+                <li class="selected"><a href="/rent">Rent a Bike</a></li>
+                <li><a href="/list">List a Bike</a></li>
+            </nav>
+        </div>
+    </header>
+    <section id="main">
+      <% if(typeof message != "undefined") { %>
+      <div class="messages">
+	<% for(var a = 0; a< message.length; a++) { %>
+	<div class="alert alert-<%= message[a].category || 'info' %>">
+          <a class="close" data-dismiss="alert">×</a>
+          <%= message[a].str %>
+	</div>
+	<% } %>
+      </div>
+      <% } %>
+
+      <!-- start of body -->

@@ -9,6 +9,7 @@ var express = require('express')
   , http = require('http')
   , path = require('path');
 
+// global config
 config = {};
 try { config = require('./config'); } catch (e) { console.warn("config not found"); }
 
@@ -24,8 +25,24 @@ app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
-  app.use(express.cookieParser('your secret here'));
-  app.use(express.session());
+app.use(express.cookieParser('your secret here'));
+//app.use(express.cookieSession());
+app.use(express.session({
+        store: new express.session.MemoryStore(),
+        secret: 'secret',
+        key: 'bla'
+    }));
+
+app.use(express.csrf());
+
+/*
+app.use(function(req, res, next) {
+    if(!req.session.csrf)
+	req.session.csrf = Math.random().toString().substring(2);
+    next();
+});
+*/
+
 app.use(app.router);
   app.use(require('less-middleware')({ src: __dirname + '/public' }));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -36,9 +53,7 @@ if ('development' == app.get('env')) {
 }
 
 
-app.get('/', routes.index);
-app.get('/users', user.list);
-
+require('./routes').load(app);
 
 
 http.createServer(app).listen(app.get('port'), function(){

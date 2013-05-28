@@ -1,0 +1,35 @@
+<% include head %>
+
+<div class="row">
+  <div class="span7 box">
+    <h1>Log in</h1>
+    <div class="span6 offset1">
+      <form method="POST">
+	<input type="hidden" name="_csrf" value="<%= csrf %>">
+
+	<fieldset class="control-group ">
+	  <label class="control-label" for="login-email_address">Email</label>
+	  <div class="controls">
+	    <input autofocus="autofocus" class="span5" id="login-email_address" name="email" type="text" value="">
+	  </div>
+	</fieldset>
+
+
+	<fieldset class="control-group ">
+	  <label class="control-label" for="password">Password</label>
+	  <div class="controls">
+	    <input class="span5" id="login-password" name="login-password" type="password" value="">
+	  </div>
+	</fieldset>
+
+
+	<div class="actions">
+	  <button class="btn btn-inverse">log in</button> <a href="/signup" class="btn">create a new account</a>
+	</div>
+      </form>
+    </div>
+  </div>
+
+</div>
+
+<% include foot %>

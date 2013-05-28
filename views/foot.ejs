@@ -1,0 +1,29 @@
+      <!-- end of body -->
+
+    </section>
+    <footer>
+        <div>
+            <p>Copyright &copy; 2013. <a href="https://www.balancedpayments.com/">Balanced</a>.
+            </p>
+        </div>
+    </footer>
+    <!--a href="https://github.com/balanced/rentmybikes" id="github">
+        <img src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub">
+    </a-->
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://js.balancedpayments.com/v1/balanced.dev.js"></script>
+    <script type="text/javascript" src="/javascripts/base.js"></script>
+    <script type="text/javascript">
+      var csrf = '<%= csrf %>';
+      var marketplaceUri = '<%= config.marketplace_uri %>';
+      //  kick everything off when jquery is ready
+      $(function () {
+        rentmybike.init({
+          csrfToken:csrf,
+          marketplaceUri:marketplaceUri
+        });
+      });
+    </script>
+</body>
+</html>

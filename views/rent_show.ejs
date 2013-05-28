@@ -1,0 +1,36 @@
+<% include head %>
+
+<% include listing %>
+
+<div class="row">
+  <div class="span7 box">
+    <h1>Checkout</h1>
+    <div class="span6 offset1">
+      <form method="POST" id="purchase">
+	<input type="hidden" name="_csrf" value="<%= csrf %>">
+
+
+
+	% if purchase_form or guest_purchase_form:
+	% if request.user.is_authenticated:
+	${ form(purchase_form, False) }
+	% else:
+	<p>I already have an account.
+	  <a href="/login?r=<%= req.url %>">Sign me in</a>.</p>
+	${ form(guest_purchase_form, True) }
+	% endif
+	<div class="actions">
+	  <button class="btn btn-inverse">rent</button>
+	</div>
+	% else:
+	<p>We already have your payment details on file, click "rent" to rent<br>this bike.</p>
+	<div class="actions">
+	  <button class="btn btn-inverse">rent</button>
+	</div>
+	% endif
+      </form>
+    </div>
+  </div>
+</div>
+
+<% include foot %>
