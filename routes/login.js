@@ -26,7 +26,7 @@ exports.login = function (req, res) {
 
 exports.logout = function (req, res) {
     req.session.user = null;
-    res.redirect('back');
+    res.redirect(req.query.r || 'back');
 };
 
 exports.signup = function (req, res) {

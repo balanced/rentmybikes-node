@@ -9,6 +9,9 @@
     "express": "3.2.0",
     "ejs": "*",
     "less-middleware": "*",
-    "mailman": "*"
+    "mailman": "*",
+    "orm": "*",
+    "sqlite3": "*",
+    "sql-query": "*"
   }
 }

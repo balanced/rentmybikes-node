@@ -7,7 +7,7 @@
     <link type="text/css" rel="stylesheet" href="/stylesheets/base.css"/>
 </head>
 <body>
-    <a href="<%= config['GITHUB_URL'] %>">
+    <a href="<%= config.GITHUB_URL %>">
         <img style="position: absolute; top: 0; right: 0; border: 0;"
              src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"
              alt="Fork me on GitHub">
@@ -20,7 +20,7 @@
                 <% if(user.account_uri) { %>
                 <li><a href="/transactions">transaction history</a></li>
                 <% } %>
-                <li><a href="/logout">log out</a></li>
+                <li><a href="/logout?r=<%= req.url %>">log out</a></li>
             <% } else { %>
                 <li><a href="/login">log in</a></li>
                 <li><a href="/signup">sign up</a></li>

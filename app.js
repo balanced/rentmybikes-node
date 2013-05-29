@@ -1,19 +1,22 @@
 
-/**
- * Module dependencies.
- */
-
-var express = require('express')
-  , routes = require('./routes')
-  , user = require('./routes/user')
-  , http = require('http')
-  , path = require('path');
-
 // global config
 config = {};
 try { config = require('./config'); } catch (e) { console.warn("config not found"); }
 
+
+var express = require('express')
+//  , routes = require('./routes')
+//  , user = require('./routes/user')
+  , http = require('http')
+  , path = require('path')
+  , orm = require('orm');
+
 var nbalanced = require('nbalanced');
+
+// global database
+database = {
+    connection: orm.connect(config.database)
+};
 
 var app = express();
 

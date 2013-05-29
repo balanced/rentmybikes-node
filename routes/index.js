@@ -3,10 +3,11 @@ var login = require('./login');
 var rent = require('./rent');
 
 exports.load = function(app) {
-    app.get('/', index);
+    app.get('/', rent.list);
 
     app.get('/rent', rent.list);
     app.get('/rent/:id', rent.view);
+    app.post('/rent/:id', rent.view_post);
 
     //    app.get('/list',
 
@@ -19,6 +20,7 @@ exports.load = function(app) {
     app.post('/signup', login.signup_post);
 };
 
+/*
 function index(req, res) {
     console.log(req.session);
     res.render('index', {
@@ -28,3 +30,4 @@ function index(req, res) {
 	user: req.session.user
     });
 }
+*/

@@ -38,7 +38,7 @@
         for (var key in cardData) {
             var trimmedKey = key.replace('guest-', '').replace('purchase-', '');
             cardData[trimmedKey] = cardData[key];
-            delete cardData[key];
+            if(trimmedKey != key) delete cardData[key];
         }
 
         var name = $('[name$="name"]', $form).val();
@@ -210,6 +210,7 @@
         $('.loading').hide();
     };
     var showError = function (message) {
+	console.log(message);
         var $alert = $('.alert:visible');
         if ($alert.length) {
             $alert.remove();

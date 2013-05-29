@@ -1,4 +1,5 @@
-<div class="box bike ${ listing.bike_type }">
+
+<div class="box bike <%= listing.bicycle_type %>">
   <div class="title">
     <h2><%= listing.title %></h2>
   </div>
@@ -13,11 +14,11 @@
     <div class="info">
       <div>
         <strong>Location</strong>
-        <span>Palo Alto, CA</span>
+        <span><%= listing.location %></span>
       </div>
       <div>
         <strong>Type</strong>
-        <span><%= listing.bike_type %></span>
+        <span><%= listing.bicycle_type %></span>
       </div>
       <div>
         <% if(!hide_button) { %>
@@ -26,4 +27,4 @@
       </div>
     </div>
   </div>
-</div
+</div>
