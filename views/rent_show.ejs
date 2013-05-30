@@ -9,7 +9,7 @@
       <form method="POST" id="purchase">
 	<input type="hidden" name="_csrf" value="<%= csrf %>">
 
-	<% if( user && user.card ) { %>
+	<% if( has_card ) { %>
 	<p>We already have your payment details on file, click "rent" to rent<br>this bike.</p>
 	<% } else { %>
 

@@ -27,19 +27,24 @@ exports.list = function (req, res) {
 
 exports.view = function (req, res) {
     //req.params.id
+
     models.listing.get(req.params.id * 1, function (err, data) {
 	if(err)
 	    return res.redirect('back');
-	res.render('rent_show', {
-	    config: config,
-	    title: "",
-	    req: req,
-	    user: req.session.user,
-	    csrf: req.session._csrf,
+	payments.has_a_card(req.session.user && req.session.user.payment_id, function(err, has_card) {
+	    res.render('rent_show', {
+		config: config,
+		title: "",
+		req: req,
+		user: req.session.user,
+		csrf: req.session._csrf,
 
-	    hide_button: true,
+		hide_button: true,
 
-	    listing:  data
+		listing:  data,
+
+		has_card: has_card
+	    });
 	});
     });
     //res.end('view list '+req.params.id);
@@ -129,7 +134,9 @@ exports.view_post = function (req, res) {
 	}else{
 	    // TODO: check if they already have the card saved
 	    //card_uri = req.session.user.uri;
+	    make_charge(req.session.user.payment_id);
 	}
+
 
 
     });

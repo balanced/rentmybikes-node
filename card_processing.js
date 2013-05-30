@@ -25,12 +25,12 @@ exports.add_card = function(to, card, callback) {
     //});
 };
 
-exports.has_a_card = function(account, callback) {
+exports.has_a_card = function(user, callback) {
     balanced.Customers.get(user, function(err, customer) {
 	if(err)
 	    return callback(err, false);
-	var Customers = balanced.Customers.nbalanced(customers);
-	Customers.Cards.list(function(err, cards) {
+	var Customer = balanced.Customers.nbalanced(customer);
+	Customer.Cards.list(function(err, cards) {
 	    if(err)
 		return callback(err, false);
 	    callback(null, cards.items.length != 0);
@@ -40,7 +40,6 @@ exports.has_a_card = function(account, callback) {
 
 exports.charge_user = function(from, to, amount, description, callback) {
     console.log(arguments);
-    // fix this to use uri again
     balanced.Customers.get(to, function(err, to_customer) {
 	var to_account = balanced.Customers.nbalanced(to_customer);
 	console.log(to_account);
