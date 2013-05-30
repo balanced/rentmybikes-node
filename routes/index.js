@@ -1,6 +1,8 @@
 
 var login = require('./login');
 var rent = require('./rent');
+var list = require('./list');
+
 
 exports.load = function(app) {
     app.get('/', rent.list);
@@ -9,7 +11,7 @@ exports.load = function(app) {
     app.get('/rent/:id', rent.view);
     app.post('/rent/:id', rent.view_post);
 
-    //    app.get('/list',
+    app.get('/list', list.create);
 
     app.get('/account', login.account);
 

@@ -137,7 +137,5 @@ exports.view_post = function (req, res) {
 	    make_charge(req.session.user.payment_id);
 	}
 
-
-
     });
 };

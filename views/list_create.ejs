@@ -1,5 +1,77 @@
 <% include head %>
 
+<div class="row">
+  <div class="span7 box">
+    <h1>List your bike</h1>
+    <div class="span6 offset1">
+      <form accept-charset="UTF-8" action="/list" id="kyc" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" />
+	  <intput type="hidden" name="_csrf" value="<%= csrf %>" >
+	    <fieldset class="control-group">
+	      <label class="control-label" for="street_address">Home Address</label>
+	      <div class="controls">
+		<input class="span5" id="street_address" name="street_address" type="text" />
+	      </div>
+	    </fieldset>
+	    <fieldset class="control-group">
+	      <label class="control-label" for="postal_code">Zip Code</label>
+	      <div class="controls">
+		<input class="span5" id="postal_code" name="postal_code" type="text" />
+	      </div>
+	    </fieldset>
+	    <input id="state" name="state" type="hidden" />
+	    <input id="country_code" name="country_code" type="hidden" value="USA" />
+	    <fieldset class="control-group">
+	      <label class="control-label" for="phone_number">Phone Number</label>
+	      <div class="controls">
+		<input class="span5" id="phone_number" name="phone_number" type="text" />
+	      </div>
+	    </fieldset>
+	    <div class="control-group">
+	      <label for="date_of_birth_month">Date of Birth</label>
+	      <select class="span1" id="date_of_birth_month" name="date_of_birth_month">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		<option value="9">9</option>
+		<option value="10">10</option>
+		<option value="11">11</option>
+		<option value="12">12</option>
+	      </select>
+	      <select class="span1" id="date_of_birth_year" name="date_of_birth_year"><option value="1900">1900</option>
+		<% for( var year = 1900; year < 2000; year++) { %>
+		   <option value="<%= year %>"><%= year %></option>
+		   <% } %>
+	      </select>
+	    </div>
+	    <fieldset>
+	      <legend>
+		Add your bank account
+	      </legend>
+	      <fieldset class="control-group">
+		<label class="control-label" for="account_number">Account Number</label>
+		<div class="controls">
+		  <input id="account_number" name="account_number" type="text" />
+		</div>
+	      </fieldset>
+	      <div class="control-group">
+		<label for="bank_code">Routing Number</label>
+		<input id="bank_code" name="bank_code" type="text" />
+		<span id="bank-code-result"></span>
+	      </div>
+	    </fieldset>
+	    <div class="actions">
+	      <input name="commit" type="submit" value="Save" />
+	    </div>
+	</div>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
 
-
-<% include foot %>
+  <% include foot %>

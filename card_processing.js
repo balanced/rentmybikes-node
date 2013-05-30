@@ -1,4 +1,4 @@
-var nbalanced = require('nbalanced');
+var nbalanced = require('balanced-official');
 
 var balanced = new nbalanced({
     marketplace_uri: config.marketplace_uri,
@@ -78,5 +78,11 @@ exports.last_four = function(user, callback) {
 		return callback({ str: "No cards on this account" }, false);
 	    callback(null, cards.items[0].last_four);
 	});
+    });
+};
+
+exports.add_bank = function(user_uri, bank_uri, callback) {
+    balanced.Customers.addBankAccount(user_uri, bank_uri, function(err, result) {
+	callback(err, result);
     });
 };

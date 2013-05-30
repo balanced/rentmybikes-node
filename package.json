@@ -12,6 +12,7 @@
     "mailman": "*",
     "orm": "*",
     "sqlite3": "*",
-    "sql-query": "*"
+    "sql-query": "*",
+    "balanced-official": "*"
   }
 }
