@@ -11,8 +11,6 @@ var express = require('express')
   , path = require('path')
   , orm = require('orm');
 
-var nbalanced = require('nbalanced');
-
 
 var app = express();
 
@@ -25,7 +23,7 @@ app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(express.cookieParser('your secret here'));
-//app.use(express.cookieSession());
+
 app.use(express.session({
         store: new express.session.MemoryStore(),
         secret: 'secret',
@@ -33,14 +31,6 @@ app.use(express.session({
     }));
 
 app.use(express.csrf());
-
-/*
-app.use(function(req, res, next) {
-    if(!req.session.csrf)
-	req.session.csrf = Math.random().toString().substring(2);
-    next();
-});
-*/
 
 app.use(app.router);
   app.use(require('less-middleware')({ src: __dirname + '/public' }));
