@@ -13,10 +13,6 @@ var express = require('express')
 
 var nbalanced = require('nbalanced');
 
-// global database
-database = {
-    connection: orm.connect(config.database)
-};
 
 var app = express();
 

@@ -3,21 +3,14 @@ var orm = require('orm');
 
 var _dummy_data = {
     user: [
-	{ name: "Matt"
-	  , email: "matt@something.com"
+	{ name: "Tabitha Royce"
+	  , email: "tt@example.com"
 	  , password: "-cant-login-with-this-hash"
-	  , card_uri: ""
+	  , balanced_id: "/v1/customers/AC2ReyNfI1yapM1rFPdVDE0U"
 	  , id: 1
 	}
     ],
     listing: [
-	/*{ title: "epic bike"
-	  , description: "this is the best bike that you are every going to see, so you should get it asap"
-	  , price: 15
-	  , bicycle_type: "something"
-	  , user_id: 1
-	  , location: "SF"
-	},*/
 	{ title: "panasonic fixie"
 	  , description: "Early 80's panasonic 10spd frame with a nice new chrome fork, aluminum bars, nice aluminum stem, weinman singlespeed/fixed wheel set (velocity style rims)."
 	  , price: 15
@@ -57,7 +50,7 @@ var connection = exports.connection = orm.connect(config.database, function (err
 	name: String,
 	email: String,
 	password: String,
-	card_uri: String
+	balanced_id: String
     }, {
 
     });
